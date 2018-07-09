@@ -9,13 +9,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cseeger-epages/mattermail/model"
 	imap "github.com/emersion/go-imap"
 	idle "github.com/emersion/go-imap-idle"
 	"github.com/emersion/go-imap/backend"
 	"github.com/emersion/go-imap/backend/memory"
 	"github.com/emersion/go-imap/server"
 	"github.com/pkg/errors"
-	"github.com/rodcorsi/mattermail/model"
 )
 
 type testServer struct {

@@ -3,8 +3,8 @@ package mmail
 import (
 	"sync"
 
+	"github.com/cseeger-epages/mattermail/model"
 	"github.com/pkg/errors"
-	"github.com/rodcorsi/mattermail/model"
 )
 
 // Start server

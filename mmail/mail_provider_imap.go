@@ -6,11 +6,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cseeger-epages/mattermail/model"
 	"github.com/emersion/go-imap"
 	idle "github.com/emersion/go-imap-idle"
 	"github.com/emersion/go-imap/client"
 	"github.com/pkg/errors"
-	"github.com/rodcorsi/mattermail/model"
 )
 
 // MailProviderImap implements MailProvider using imap
@@ -333,6 +333,10 @@ func (m *MailProviderImap) Connect() error {
 	if err != nil {
 		m.log.Error("MailProviderImap.CheckConnection: Unable to login:", m.cfg.Username)
 		return errors.Wrapf(err, "unable to login username:'%v'", m.cfg.Username)
+	}
+
+	if _, err = m.selectMailBox(MailBox); err != nil {
+		return errors.Wrap(err, "select mailbox on checkConnection")
 	}
 
 	idleClient := idle.NewClient(m.imapClient)
